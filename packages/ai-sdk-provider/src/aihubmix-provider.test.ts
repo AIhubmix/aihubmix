@@ -2,13 +2,87 @@ import {
   EmbeddingModelV2Embedding,
   LanguageModelV2Prompt,
 } from '@ai-sdk/provider';
-import { createTestServer } from '@ai-sdk/provider-utils/test';
 import { createAihubmix } from './aihubmix-provider';
 
 // 类型断言，告诉 TypeScript 这些全局函数存在
 declare const describe: (name: string, fn: () => void) => void;
 declare const it: (name: string, fn: () => void | Promise<void>) => void;
+declare const beforeEach: (fn: () => void) => void;
+declare const afterAll: (fn: () => void) => void;
 declare const expect: any;
+
+type TestResponse =
+  | {
+      type: 'json-value';
+      body: unknown;
+    }
+  | {
+      type: 'binary';
+      body: Buffer;
+    };
+
+function createTestServer(
+  urls: Record<string, { response?: TestResponse }>,
+) {
+  const originalFetch = globalThis.fetch;
+  const calls: Array<{
+    url: string;
+    requestHeaders: Record<string, string>;
+    requestBody?: string;
+  }> = [];
+
+  beforeEach(() => {
+    calls.length = 0;
+  });
+
+  afterAll(() => {
+    globalThis.fetch = originalFetch;
+  });
+
+  globalThis.fetch = async (input: RequestInfo | URL, init?: RequestInit) => {
+    const request = input instanceof Request ? input : undefined;
+    const url = request?.url ?? String(input);
+    const headers = new Headers(request?.headers);
+
+    if (init?.headers) {
+      new Headers(init.headers).forEach((value, key) => {
+        headers.set(key, value);
+      });
+    }
+
+    const requestHeaders = Object.fromEntries(headers.entries());
+    delete requestHeaders['user-agent'];
+
+    calls.push({
+      url,
+      requestHeaders,
+      requestBody:
+        typeof init?.body === 'string'
+          ? init.body
+          : typeof request?.body === 'string'
+            ? request.body
+            : undefined,
+    });
+
+    const response = urls[url]?.response;
+
+    if (!response) {
+      return new Response(`No test response configured for ${url}`, {
+        status: 404,
+      });
+    }
+
+    if (response.type === 'binary') {
+      return new Response(response.body);
+    }
+
+    return new Response(JSON.stringify(response.body), {
+      headers: { 'content-type': 'application/json' },
+    });
+  };
+
+  return { urls, calls };
+}
 
 const TEST_PROMPT: LanguageModelV2Prompt = [
   { role: 'user', content: [{ type: 'text', text: 'Hello' }] },
@@ -30,8 +104,6 @@ const server = createTestServer({
     {},
   'http://localhost:1234/v1/chat/completions': {},
 });
-
-(global as any).File = Buffer;
 
 describe('aihubmix provider', () => {
   describe('chat models', () => {
