@@ -56,6 +56,8 @@ One Gateway, Infinite Models；one-stop request: OpenAI, Claude, Gemini, DeepSee
 
 📖 **[查看详细文档](./packages/mcp/README.md)** | 📦 **[npm包](https://www.npmjs.com/package/@aihubmix/mcp)**
 
+> ℹ️ **`@aihubmix/ai-sdk-provider` 已迁移。** 该包不再在本仓库维护，已迁移到独立项目单独维护：**[AIhubmix/ai-sdk-provider](https://github.com/AIhubmix/ai-sdk-provider)**。
+
 
 ## PR规范
 
