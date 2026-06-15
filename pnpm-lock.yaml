@@ -60,6 +60,9 @@ importers:
 
   packages/claude-code:
     dependencies:
+      '@fastify/cors':
+        specifier: ^11.0.1
+        version: 11.2.0
       '@fastify/static':
         specifier: ^8.2.0
         version: 8.3.0
@@ -72,12 +75,18 @@ importers:
       json5:
         specifier: ^2.2.3
         version: 2.2.3
+      jsonrepair:
+        specifier: ^3.12.0
+        version: 3.14.0
       openurl:
         specifier: ^1.1.1
         version: 1.1.1
       tiktoken:
         specifier: ^1.0.21
         version: 1.0.22
+      undici:
+        specifier: ^6.21.0
+        version: 6.26.0
       uuid:
         specifier: ^11.1.0
         version: 11.1.0
@@ -1091,6 +1100,13 @@ packages:
       ajv: 8.17.1
       ajv-formats: 3.0.1(ajv@8.17.1)
       fast-uri: 3.1.0
+    dev: false
+
+  /@fastify/cors@11.2.0:
+    resolution: {integrity: sha512-LbLHBuSAdGdSFZYTLVA3+Ch2t+sA6nq3Ejc6XLAKiQ6ViS2qFnvicpj0htsx03FyYeLs04HfRNBsz/a8SvbcUw==}
+    dependencies:
+      fastify-plugin: 5.1.0
+      toad-cache: 3.7.0
     dev: false
 
   /@fastify/error@4.2.0:
@@ -3944,6 +3960,11 @@ packages:
       graceful-fs: 4.2.11
     dev: true
 
+  /jsonrepair@3.14.0:
+    resolution: {integrity: sha512-tWPGKMZf/8UPim+fcW2EfcQ/d/7aKUrP6IECz9G3Tu6Q5dX0orSleqJ9z6sSw7qrQkjF8/Edo4DvsWBZ8H+HNg==}
+    hasBin: true
+    dev: false
+
   /keyv@4.5.4:
     resolution: {integrity: sha512-oxVHkHR/EJf2CNXnWxRLW6mg7JyCCUcG0DtEGmL2ctUo1PNTin1PUil+r/+4r5MpVgC/fn1kjsx7mjSujKqIpw==}
     dependencies:
@@ -5297,6 +5318,11 @@ packages:
   /undici-types@7.16.0:
     resolution: {integrity: sha512-Zz+aZWSj8LE6zoxD+xrjh4VfkIG8Ya6LvYkZqtUQGJPZjYl53ypCaUwWqo7eI0x66KBGeRo+mlBEkMSeSZ38Nw==}
     dev: true
+
+  /undici@6.26.0:
+    resolution: {integrity: sha512-4yqz8a3n5HmGTlsbADNtr/dJlhkh/55Rq798G6ibiULcXbDtaLpTl1pvdqcbFfeoj3iSi52lePFM7h9H21cw/A==}
+    engines: {node: '>=18.17'}
+    dev: false
 
   /universalify@0.1.2:
     resolution: {integrity: sha512-rBJeI5CXAlmy1pV+617WB9J63U6XcazHHF2f2dbJix4XzpUF0RS3Zbj0FGIOCAva5P/d/GBOYaACQ1w+0azUkg==}
