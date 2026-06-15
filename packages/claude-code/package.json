@@ -1,6 +1,6 @@
 {
   "name": "@aihubmix/claude-code",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Use Claude Code without an Anthropics account and route it to another LLM provider",
   "bin": {
     "acc": "./dist/cli.js"

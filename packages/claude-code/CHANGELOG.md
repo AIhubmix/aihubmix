@@ -1,5 +1,18 @@
 # Changelog
 
+## 1.0.1
+
+### Patch Changes
+
+- Fix image attachments and declare missing runtime dependencies
+
+  - Fix the base64 image data URL format in the Anthropic transformer
+    (`data:<media_type>;base64,<data>`), which previously broke conversations
+    with image attachments.
+  - Declare `@fastify/cors`, `undici` and `jsonrepair` in `dependencies`; they
+    were imported by the source but missing from `package.json`, so a clean
+    install could not build the package.
+
 ## 1.0.0
 
 ### Major Changes
