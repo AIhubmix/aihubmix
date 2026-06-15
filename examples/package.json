@@ -4,16 +4,13 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "tsx ai-sdk-provider/index.ts",
-    "test": "tsx ai-sdk-provider/index.ts",
-    "test:ai-sdk-provider": "tsx ai-sdk-provider/index.ts",
+    "dev": "tsx claude-code/index.ts",
+    "test": "tsx claude-code/index.ts",
     "test:claude-code": "tsx claude-code/index.ts",
     "test:mcp": "tsx mcp/index.ts",
-    "build": "tsc",
-    "start": "node dist/ai-sdk-provider.js"
+    "build": "tsc"
   },
   "dependencies": {
-    "@aihubmix/ai-sdk-provider": "workspace:*",
     "@aihubmix/claude-code": "workspace:*",
     "ai": "^6.0.0",
     "dotenv": "^16.6.1",

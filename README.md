@@ -35,32 +35,6 @@ One Gateway, Infinite Models；one-stop request: OpenAI, Claude, Gemini, DeepSee
 
 📖 **[View Detailed Documentation](./packages/claude-code/README.md)** | 📦 **[npm package](https://www.npmjs.com/package/@aihubmix/claude-code)**
 
-### @aihubmix/ai-sdk-provider
-**AI SDK Provider Package** - Provides unified model access interface for Vercel AI SDK
-
-> **v1.0.1** - Compatible with AI SDK v6
-
-- **Features**：
-  - Support for 500+ AI models unified access
-  - Compatible with Vercel AI SDK v6 interface
-  - Automatic model routing and load balancing
-  - Unified error handling and retry mechanisms
-  - TypeScript type support
-  - Text generation, streaming text, image generation
-  - Embedding vectors, structured data generation
-  - Speech synthesis, speech-to-text
-  - Tool support (such as web search)
-
-- **Use Cases**：
-  - Next.js application integration
-  - Vercel AI SDK projects
-  - AI applications requiring multi-model support
-  - Text generation and processing
-  - Image generation applications
-  - Speech processing applications
-
-📖 **[View Detailed Documentation](./packages/ai-sdk-provider/README.md)** | 📦 **[npm package](https://www.npmjs.com/package/@aihubmix/ai-sdk-provider)**
-
 ### @aihubmix/mcp
 **MCP (Model Context Protocol) Package** - Model Context Protocol implementation
 
@@ -118,13 +92,13 @@ Specify package name in commit messages, format: `<type>[<scope>]: <description>
 #### Examples
 
 ```
-feat[ai-sdk-provider]: Add Gemini model support
+feat[claude-code]: Add new model support
 fix[claude-code]: Fix code generation bug
 docs[mcp]: Update API documentation
-refactor[ai-sdk-provider]: Refactor model routing logic
+refactor[claude-code]: Refactor routing logic
 test[claude-code]: Add unit tests
 chore[mcp]: Update dependency versions
-perf[ai-sdk-provider]: Optimize model response speed
+perf[mcp]: Optimize response speed
 ```
 
 ### PR Title Guidelines
@@ -134,10 +108,10 @@ PR titles should be concise and clear, format: `<type>[<scope>]: <description>`
 #### Examples
 
 ```
-feat[ai-sdk-provider]: Add Gemini model support
+feat[claude-code]: Add new model support
 fix[claude-code]: Fix multi-line code generation issue
 docs[mcp]: Improve tool usage documentation
-refactor[ai-sdk-provider]: Refactor model routing logic
+refactor[mcp]: Refactor tool routing logic
 ```
 
 ### PR Description Template
@@ -157,7 +131,6 @@ refactor[ai-sdk-provider]: Refactor model routing logic
 - [ ] Revert (revert)
 
 ## Scope
-- [ ] ai-sdk-provider
 - [ ] claude-code
 - [ ] mcp
 

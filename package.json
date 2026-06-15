@@ -10,7 +10,7 @@
     "test": "turbo run test",
     "test:all": "pnpm build && cd examples && pnpm test",
     "test:examples": "cd examples && pnpm test",
-    "test:workspace": "cd examples && npx tsx ai-sdk-provider.ts",
+    "test:workspace": "cd examples && npx tsx claude-code/index.ts",
     "changeset": "changeset",
     "version": "changeset version",
     "release": "turbo run build && changeset publish",

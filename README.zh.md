@@ -35,32 +35,6 @@ One Gateway, Infinite Models；one-stop request: OpenAI, Claude, Gemini, DeepSee
 
 📖 **[查看详细文档](./packages/claude-code/README.md)** | 📦 **[npm包](https://www.npmjs.com/package/@aihubmix/claude-code)**
 
-### @aihubmix/ai-sdk-provider
-**AI SDK Provider包** - 为Vercel AI SDK提供统一的模型访问接口
-
-> **v1.0.1** - 兼容 AI SDK v6
-
-- **功能特性**：
-  - 支持500+ AI模型统一访问
-  - 兼容Vercel AI SDK v6接口
-  - 自动模型路由和负载均衡
-  - 统一的错误处理和重试机制
-  - TypeScript类型支持
-  - 文本生成、流式文本、图像生成
-  - 嵌入向量、结构化数据生成
-  - 语音合成、语音转文字
-  - 工具支持（如网络搜索）
-
-- **使用场景**：
-  - Next.js应用集成
-  - Vercel AI SDK项目
-  - 需要多模型支持的AI应用
-  - 文本生成和处理
-  - 图像生成应用
-  - 语音处理应用
-
-📖 **[查看详细文档](./packages/ai-sdk-provider/README.md)** | 📦 **[npm包](https://www.npmjs.com/package/@aihubmix/ai-sdk-provider)**
-
 ### @aihubmix/mcp
 **MCP (Model Context Protocol)包** - 模型上下文协议实现
 
@@ -118,13 +92,13 @@ One Gateway, Infinite Models；one-stop request: OpenAI, Claude, Gemini, DeepSee
 #### 示例
 
 ```
-feat[ai-sdk-provider]: 添加Gemini模型支持
+feat[claude-code]: 添加新模型支持
 fix[claude-code]: 修复代码生成bug
 docs[mcp]: 更新API文档
-refactor[ai-sdk-provider]: 重构模型路由逻辑
+refactor[claude-code]: 重构路由逻辑
 test[claude-code]: 添加单元测试
 chore[mcp]: 更新依赖版本
-perf[ai-sdk-provider]: 优化模型响应速度
+perf[mcp]: 优化响应速度
 ```
 
 ### PR标题规范
@@ -134,10 +108,10 @@ PR标题应简洁明了，格式为：`<type>[<scope>]: <description>`
 #### 示例
 
 ```
-feat[ai-sdk-provider]: 添加Gemini模型支持
+feat[claude-code]: 添加新模型支持
 fix[claude-code]: 修复多行代码生成问题
 docs[mcp]: 完善工具使用文档
-refactor[ai-sdk-provider]: 重构模型路由逻辑
+refactor[mcp]: 重构工具路由逻辑
 ```
 
 ### PR描述模板
@@ -157,7 +131,6 @@ refactor[ai-sdk-provider]: 重构模型路由逻辑
 - [ ] 回滚 (revert)
 
 ## 影响范围
-- [ ] ai-sdk-provider
 - [ ] claude-code
 - [ ] mcp
 
