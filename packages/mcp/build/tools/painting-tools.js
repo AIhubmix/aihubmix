@@ -26,7 +26,8 @@ async function urlToInlineData(url) {
     if (!response.ok) {
         throw new McpError(ErrorCode.InternalError, `Failed to fetch reference image: ${response.status}`);
     }
-    const mimeType = response.headers.get('content-type') || 'image/png';
+    // content-type may carry params (e.g. "image/png; charset=utf-8") — keep only the media type.
+    const mimeType = (response.headers.get('content-type') || 'image/png').split(';')[0].trim();
     const arrayBuffer = await response.arrayBuffer();
     const data = Buffer.from(arrayBuffer).toString('base64');
     return { mimeType, data };
@@ -203,19 +204,25 @@ async function pollForCompletion(pollingUrl, apiKey, maxAttempts = 30) {
                 headers: { Authorization: `Bearer ${apiKey}`, 'Content-Type': 'application/json' },
             });
             if (!response.ok) {
-                throw new Error(`Polling request failed with status ${response.status}`);
+                const error = new Error(`Polling request failed with status ${response.status}`);
+                // 4xx (auth/bad request) won't recover on retry — fail immediately.
+                if (response.status >= 400 && response.status < 500)
+                    error.fatal = true;
+                throw error;
             }
             const data = (await response.json());
             if (data.status === 'succeeded' || data.status === 'completed' || data.status === 'Ready') {
                 return extractImageContents(data);
             }
             else if (data.status === 'failed') {
-                throw new Error(`Task failed: ${data.error || 'Unknown error'}`);
+                const error = new Error(`Task failed: ${data.error || 'Unknown error'}`);
+                error.fatal = true; // terminal state — do not retry
+                throw error;
             }
             await sleep(2000);
         }
         catch (error) {
-            if (attempt === maxAttempts - 1) {
+            if (attempt === maxAttempts - 1 || error?.fatal) {
                 throw error;
             }
             await sleep(2000);
@@ -570,11 +577,18 @@ export const paintingTools = {
                             method: 'GET',
                             headers: authHeaders(apiKey),
                         });
-                        if (!pollResponse.ok)
+                        if (!pollResponse.ok) {
+                            // Auth errors won't recover — stop instead of polling until timeout.
+                            if (pollResponse.status === 401 || pollResponse.status === 403) {
+                                throw new McpError(ErrorCode.InternalError, 'Invalid API Key.');
+                            }
                             continue; // transient — keep polling
+                        }
                         last = normalizeVideoResponse(await pollResponse.json());
                     }
-                    catch {
+                    catch (error) {
+                        if (error instanceof McpError)
+                            throw error;
                         // transient network error — keep polling
                     }
                 }
