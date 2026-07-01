@@ -26,6 +26,7 @@
     "release": "npm run build && npm publish"
   },
   "dependencies": {
+    "@aihubmix/media-adapters": "^0.2.2",
     "@modelcontextprotocol/sdk": "^0.4.0",
     "form-data": "^4.0.3",
     "node-fetch": "^3.0.0",
