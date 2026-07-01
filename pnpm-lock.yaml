@@ -106,6 +106,9 @@ importers:
 
   packages/mcp:
     dependencies:
+      '@aihubmix/media-adapters':
+        specifier: ^0.2.2
+        version: 0.2.2
       '@modelcontextprotocol/sdk':
         specifier: ^0.4.0
         version: 0.4.0
@@ -172,6 +175,10 @@ packages:
     engines: {node: '>=18'}
     dependencies:
       json-schema: 0.4.0
+    dev: false
+
+  /@aihubmix/media-adapters@0.2.2:
+    resolution: {integrity: sha512-lHv41+u/5fgo+hFBHEAeaxxUcD/Veedizg/iBa45jyctxiNpgvWNM9xpnRsiOBKZYz4UIaaBxHfNrUGiFo4TtQ==}
     dev: false
 
   /@babel/runtime@7.28.4:
