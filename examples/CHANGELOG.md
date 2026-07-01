@@ -1,5 +1,12 @@
 # @aihubmix/examples
 
+## 0.0.5
+
+### Patch Changes
+
+- Updated dependencies
+  - @aihubmix/claude-code@1.0.2
+
 ## 0.0.4
 
 ### Patch Changes
