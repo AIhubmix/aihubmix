@@ -40,11 +40,15 @@ Two configuration methods are now supported. For detailed instructions, see [CON
 
 ```bash
 export AIHUBMIX_API_KEY="your-api-key-here"
+export AIHUBMIX_BASE_URL="https://aihubmix.com"  # Optional, upstream API domain
 export HOST="127.0.0.1"  # Optional
 export PORT="3456"        # Optional
 export LOG="true"         # Optional
 export API_TIMEOUT_MS="30000"  # Optional
 ```
+
+> `AIHUBMIX_BASE_URL` lets you switch the upstream access domain (do not include `/v1/...`).
+> Default: `https://aihubmix.com`; you can replace it with another domain as needed.
 
 ### 2. Configuration File
 
@@ -53,6 +57,7 @@ Configuration file located at `~/.aihubmix-claude-code/config.json`:
 ```json
 {
   "API_KEY": "your-api-key-here",
+  "BASE_URL": "https://aihubmix.com",
   "HOST": "127.0.0.1",
   "PORT": 3456,
   "LOG": true,

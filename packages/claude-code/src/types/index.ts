@@ -35,6 +35,7 @@ export interface Router {
 
 export interface Config {
   API_KEY: string;
+  BASE_URL?: string;
   LOG?: boolean;
   API_TIMEOUT_MS?: number;
   HOST?: string;

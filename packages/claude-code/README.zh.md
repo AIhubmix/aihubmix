@@ -40,11 +40,15 @@ npm install -g @aihubmix/claude-code
 
 ```bash
 export AIHUBMIX_API_KEY="your-api-key-here"
+export AIHUBMIX_BASE_URL="https://aihubmix.com"  # 可选，上游 API 访问域名
 export HOST="127.0.0.1"  # 可选
 export PORT="3456"        # 可选
 export LOG="true"         # 可选
 export API_TIMEOUT_MS="30000"  # 可选
 ```
+
+> `AIHUBMIX_BASE_URL` 用于更换上游访问域名（不要带 `/v1/...` 路径）。
+> 默认值：`https://aihubmix.com`，可按需替换成其他域名。
 
 ### 2. 配置文件
 
@@ -53,6 +57,7 @@ export API_TIMEOUT_MS="30000"  # 可选
 ```json
 {
   "API_KEY": "your-api-key-here",
+  "BASE_URL": "https://aihubmix.com",
   "HOST": "127.0.0.1",
   "PORT": 3456,
   "LOG": true,

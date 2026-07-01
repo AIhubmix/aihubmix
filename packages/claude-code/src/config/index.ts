@@ -116,6 +116,7 @@ export const initConfig = async (): Promise<Config> => {
   // Create default config with environment variables
   const envConfig: Config = {
     API_KEY: process.env.AIHUBMIX_API_KEY || "",
+    BASE_URL: process.env.AIHUBMIX_BASE_URL,
     LOG: process.env.LOG === "true",
     API_TIMEOUT_MS: process.env.API_TIMEOUT_MS ? parseInt(process.env.API_TIMEOUT_MS) : undefined,
     HOST: process.env.HOST,

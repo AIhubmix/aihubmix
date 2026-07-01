@@ -40,11 +40,15 @@ npm install -g @aihubmix/claude-code
 
 ```bash
 export AIHUBMIX_API_KEY="your-api-key-here"
+export AIHUBMIX_BASE_URL="https://aihubmix.com"  # オプション、上流 API ドメイン
 export HOST="127.0.0.1"  # オプション
 export PORT="3456"        # オプション
 export LOG="true"         # オプション
 export API_TIMEOUT_MS="30000"  # オプション
 ```
+
+> `AIHUBMIX_BASE_URL` は上流アクセスドメインを切り替えます（`/v1/...` パスは含めないでください）。
+> デフォルト：`https://aihubmix.com`。必要に応じて他のドメインに置き換えられます。
 
 ### 2. 設定ファイル
 
@@ -53,6 +57,7 @@ export API_TIMEOUT_MS="30000"  # オプション
 ```json
 {
   "API_KEY": "your-api-key-here",
+  "BASE_URL": "https://aihubmix.com",
   "HOST": "127.0.0.1",
   "PORT": 3456,
   "LOG": true,

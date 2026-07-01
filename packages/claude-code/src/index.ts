@@ -57,6 +57,9 @@ async function run(options: RunOptions = {}) {
   let HOST = config.HOST || "127.0.0.1";
   const port = config.PORT || 3456;
 
+  // Upstream API base URL (env/config overridable). Default: https://aihubmix.com
+  const baseUrl = (config.BASE_URL || "https://aihubmix.com").replace(/\/+$/, "");
+
   // Save the PID of the background process
   savePid(process.pid);
 
@@ -86,7 +89,7 @@ async function run(options: RunOptions = {}) {
       providers: [
         {
           name: "aihubmix",
-          api_base_url: "https://aihubmix.com/v1/chat/completions",
+          api_base_url: `${baseUrl}/v1/chat/completions`,
           api_key: config.API_KEY,
           models: [
             "AiHubmix-Phi-4-mini-reasoning",
