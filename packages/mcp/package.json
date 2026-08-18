@@ -1,57 +1,57 @@
 {
   "name": "@aihubmix/mcp",
-  "version": "1.1.0",
-  "description": "Custom MCP Server with file operations and API tools",
-  "main": "build/server.js",
+  "version": "2.0.0",
+  "description": "Official AIHubMix MCP server (OpenRouter-parity): live model catalog, pricing, credits, account/keys, docs search, test-chat, and image/video generation for AI coding tools (Claude Code / Codex / Cursor). stdio + Streamable HTTP.",
+  "license": "MIT",
+  "author": "chenxue",
   "type": "module",
   "engines": {
-    "node": ">=16.0.0"
+    "node": ">=18"
   },
   "bin": {
-    "aihubmix-mcp": "build/server.js"
+    "aihubmix-mcp": "dist/index.js"
   },
+  "main": "dist/index.js",
   "files": [
-    "build",
+    "dist",
     "README.md"
   ],
   "scripts": {
-    "build": "tsc && chmod 755 build/server.js",
-    "start": "node --experimental-specifier-resolution=node build/server.js",
-    "dev": "tsx src/server.ts",
-    "test": "vitest",
-    "lint": "eslint src/**/*.ts",
-    "clean": "rm -rf build",
-    "inspect": "npx @modelcontextprotocol/inspector",
-    "prepack": "npm run build",
-    "release": "npm run build && npm publish"
+    "build": "tsc",
+    "clean": "node -e \"require('fs').rmSync('dist',{recursive:true,force:true})\"",
+    "type-check": "tsc --noEmit",
+    "prepack": "tsc",
+    "start": "node dist/index.js",
+    "start:http": "node dist/index.js --http --port 7300",
+    "test": "node test/smoke.mjs",
+    "test:http": "node test/smoke-http.mjs",
+    "test:failover": "node test/failover.mjs",
+    "test:redact": "node test/redact.mjs",
+    "test:keyrecord": "node test/keyrecord.mjs",
+    "test:keyadmin": "node test/keyadmin.mjs"
   },
   "dependencies": {
     "@aihubmix/media-adapters": "^0.2.2",
-    "@modelcontextprotocol/sdk": "^0.4.0",
-    "form-data": "^4.0.3",
-    "node-fetch": "^3.0.0",
-    "winston": "^3.11.0",
-    "zod": "^3.22.0"
+    "@modelcontextprotocol/sdk": "^1.30.0",
+    "zod": "^3.25.0"
   },
   "devDependencies": {
-    "@types/node": "^20.0.0",
-    "@types/winston": "^2.4.4",
-    "eslint": "^8.0.0",
-    "tsx": "^4.0.0",
-    "typescript": "^5.0.0",
-    "vitest": "^1.0.0"
+    "@types/node": "^24.0.0",
+    "typescript": "^5.6.0"
   },
   "keywords": [
     "mcp",
-    "server",
+    "model-context-protocol",
+    "aihubmix",
     "ai",
+    "llm",
+    "server",
     "tools"
   ],
-  "author": "chenxue",
-  "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/inferera/aihubmix.git"
+    "url": "git+https://github.com/inferera/aihubmix.git",
+    "directory": "packages/mcp"
   },
   "publishConfig": {
     "access": "public",
