@@ -11,6 +11,10 @@
 
 One Gateway, Infinite Models；one-stop request: OpenAI, Claude, Gemini, DeepSeek, Qwen, and over 500 AI models.
 
+🌐 **[aihubmix.com](https://aihubmix.com)** · 📚 **[Documentation](https://docs.aihubmix.com)** · 🧭 **[Browse all models & pricing](https://aihubmix.com/models)** · 🆓 **[Free models](https://aihubmix.com/models/free)**
+
+Popular models on AIHubMix: [Qwen3.8 Max Preview](https://aihubmix.com/model/qwen3.8-max-preview) · [Kimi K3](https://aihubmix.com/model/kimi-k3) · [GLM 5.2](https://aihubmix.com/model/glm-5.2) · [Claude Opus 5](https://aihubmix.com/model/claude-opus-5) · [Gemini 3.6 Flash](https://aihubmix.com/model/gemini-3.6-flash) · [DeepSeek V4 Flash](https://aihubmix.com/model/deepseek-v4-flash) · [Grok 4.5](https://aihubmix.com/model/grok-4.5) · [GPT-5.6 Luna](https://aihubmix.com/model/gpt-5.6-luna)
+
 ## Features
 
 ### @aihubmix/claude-code
